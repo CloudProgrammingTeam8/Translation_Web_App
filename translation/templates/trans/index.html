@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>Translation</title>    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    <script src="{% static 'js/javascript.js' %}"></script>         
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">  
+</head>
+<body>
+    <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+            <hgroup>
+
+            <h1 class="free">Translation</h1>
+            <h4>
+                Help you translate English into Chinese by speech.
+            </h4>            
+            </hgroup>
+            <div class="well">
+                <form action="#">
+                <div class="input-group">
+                    <input class="btn-lg" size="16" name="name" id="name" type="text" placeholder="Your Name">
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    <button class="btn btn-info btn-lg btn-talk" type="submit">
+                        <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <small class="promise"><em>Enter your name and click the button to speak.</em></small>
+
+                </form>
+                <p></p>
+                <p></p>
+
+                <div>
+                    <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-info">
+                        <div class="testimonial-section">
+                            Hello.
+                        </div>
+                       
+                    </span>
+                    <p></p> 
+                    <p></p>       
+                    <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-success">
+                        <div class="testimonial-section">
+                            你好
+                        </div>
+                       
+                    </span> &emsp; 
+                    <button  style="display:inline-block;" class="btn btn-info btn-lg btn-play" type="submit">
+                        <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                    </button> 
+                </div>              
+
+        
+            </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+</body>
+</html>
