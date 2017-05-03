@@ -16,9 +16,14 @@ def GTTS(TranslateInput,TextLanguage,src):
     # Texy to Speech
     tts = gTTS(text=TranslateResult, lang=TextLanguage, slow=False)
     # Save mp3 to local client
-    filename = TranslateInput+'2TW.mp3'
+    localtime = time.localtime(time.time())
+    # File Name
+    filename = TextLanguage + '_' + str(localtime.tm_year) + '_' + str(localtime.tm_mon) + '_' + \
+    str(localtime.tm_mday) + '_' + str(localtime.tm_hour) + '_' + \
+    str(localtime.tm_min) + '_' + str(localtime.tm_sec) + '.mp3'
     tts.save(filename)
     
+    # Excute Time
     total_time = time.time() - start_time
     print("--- %s seconds for GTTS---" % (total_time))  # time end
     
@@ -37,6 +42,6 @@ def GTTS(TranslateInput,TextLanguage,src):
     
     # Play on Mac localhost
     # os.system('afplay filename')
-    # os.remove(filename)
+    os.remove(filename)
 
     return  total_time  , filename , TranslateInput, TranslateResult , url

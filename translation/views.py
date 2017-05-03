@@ -14,10 +14,8 @@ def TextInput(request):
     if 'username' in request.GET:
         language = request.GET['language']
         print (language)
-        SRtext = SpeechRecogition(language)
+        SRtext, input_url = SpeechRecogition(language)
         print (input_url)
-    # if 'TranslateInput' in request.GET:
-        # Totaltime , Filename , TranslateResult , url = GTTS(request.GET['TranslateInput'])
         Totaltime , Filename , TranslateInput, TranslateResult , output_url = GTTS(SRtext,'zh-TW',language)
         # your responese
         response = {
@@ -27,7 +25,8 @@ def TextInput(request):
                     'Speech':TranslateInput,
                     'TranslateResult':TranslateResult,
                     'flag' : 2,
-                    'Mp3url':output_url
+                    'Mp3url':output_url,
+                    'Srcurl':input_url
                    }
         print (response)
         return render_to_response('trans/index.html',response)

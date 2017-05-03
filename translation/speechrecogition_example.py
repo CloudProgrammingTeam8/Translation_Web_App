@@ -1,12 +1,12 @@
 from .test_lex.microphone_rec import *
 from .test_s3.s3_test import *
 from subprocess import call
-import time
+import time , os
 
 def SpeechRecogition(language):
     #save voice path
     localtime = time.localtime(time.time())
-    data_path = str(localtime.tm_year) + '_' + str(localtime.tm_mon) + '_' + \
+    data_path = language+'_'+str(localtime.tm_year) + '_' + str(localtime.tm_mon) + '_' + \
     str(localtime.tm_mday) + '_' + str(localtime.tm_hour) + '_' + \
     str(localtime.tm_min) + '_' + str(localtime.tm_sec) + '.mp3'
     #s3 bucket path
@@ -16,7 +16,8 @@ def SpeechRecogition(language):
     #English(US): en-US
     #Japanese: ja
     #Thailand: th-TH
-    # language = 'en-US'
+    #language = 'en-US'
+
     #launch microphone and get audio
     audio = microphone()
     #transfer vocie into txt
@@ -32,7 +33,7 @@ def SpeechRecogition(language):
     # call(["rm", data_path])
 
     url = 'https://s3.amazonaws.com/'+s3_path+"/"+data_path
-
+    os.remove(data_path)
     return return_txt, url
     #download all data for bucket
     # print("DOWNLOADING...")

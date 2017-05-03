@@ -48,8 +48,10 @@
                         <div class="testimonial-section">
                             {{Speech}}
                         </div>
-                       
-                    </span>
+                    </span> &emsp;
+                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlaySrcSound()" width=40px height=40px>
+                        <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                    </button> 
                     <p></p> 
                     <p></p>       
                     <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-success">
@@ -58,15 +60,20 @@
                         </div>
                        
                     </span> &emsp; 
-                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlaySound()" width=40px height=40px>
+                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlayResultSound()" width=40px height=40px>
                         <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     </button> 
                 </div> 
                 <script>
-                    var bflat = new Audio();
-                    bflat.src = "{{Mp3url}}";
-                    function PlaySound() {
-                        bflat.play();
+                    var bflatSource = new Audio();
+                    var bflatResult = new Audio();
+                    bflatSource.src = "{{SRCurl}}"
+                    bflatResult.src = "{{Mp3url}}";
+                    function PlaySrcSound() {
+                        bflatSource.play();
+                    }
+                    function PlayResultSound() {
+                        bflatResult.play();
                     }
                 </script>                           
                 {%endif%}
