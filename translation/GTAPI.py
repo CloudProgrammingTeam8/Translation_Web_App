@@ -7,8 +7,6 @@ from .goslate import gtrans
 def GTTS(TranslateInput,TextLanguage,src):
     # Documents : https://pypi.python.org/pypi/gTTS 
    
-    
-
     # Translate (input from TextInput)
     start_time = time.time()   # time start
     TranslateResult = gtrans(TranslateInput, TextLanguage, src)

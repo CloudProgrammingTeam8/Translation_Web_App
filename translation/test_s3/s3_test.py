@@ -12,7 +12,7 @@ def upload(data_path, s3_path):
     #upload data to exist buckets
     data = open(data_path, 'rb')
     #data_path = s3_path + '/' + data_path
-    s3.Bucket(s3_path).put_object(Key=data_path, Body=data,
+    s3.Bucket(s3_path).put_object(Key=data_path, Body=data,Bucket = s3_path,
                   ACL = 'public-read-write')
 def create_s3_bucket(s3_path):
     #create new bucket

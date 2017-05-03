@@ -12,11 +12,27 @@ def translate(request):
 def TextInput(request):
 
     if 'username' in request.GET:
-        language = request.GET['language']
-        print (language)
-        SRtext, input_url = SpeechRecogition(language)
+        source_lan = request.GET['source_lan']
+        target_lan = request.GET['target_lan']
+        username = request.GET['username']
+        print (source_lan, target_lan)
+        SRtext,input_url = SpeechRecogition(source_lan)
         print (input_url)
-        Totaltime , Filename , TranslateInput, TranslateResult , output_url = GTTS(SRtext,'zh-TW',language)
+        
+        time = datetime.now().replace(microsecond=0)
+
+        record = Record()
+        record.words = SRtext
+        record.user = username
+        record.time = time
+        record.input_lan = source_lan
+        record.save()
+
+        print (time)
+    
+    # if 'TranslateInput' in request.GET:
+        # Totaltime , Filename , TranslateResult , url = GTTS(request.GET['TranslateInput'])
+        Totaltime , Filename , TranslateInput, TranslateResult , output_url = GTTS(SRtext,target_lan,source_lan)
         # your responese
         response = {
                     'TranslateText':SRtext,

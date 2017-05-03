@@ -27,12 +27,20 @@
                     <div class="input-group">
                         <input class="btn-lg" size="16" name="username" id="name" type="text" placeholder="Your Name">
                         &nbsp;
-                        <select class="language" name="language">
-                            <option value="ja">日文</option>
+                        <select class="language" name="source_lan">
+                            <option value="zh-TW">中文</option>
                             <option value="en-US" selected >英文</option>
+                            <option value="ja">日文</option>
                             <option value="th-TH">泰文</option>
                         </select> 
-                        &nbsp;
+                        to 
+                        <select class="language" name="target_lan">
+                            <option value="ja">日文</option>
+                            <option value="zh-TW" selected >中文</option>
+                            <option value="en-US">英文</option>
+                            <option value="th-TH">泰文</option>
+                        </select> 
+                        &nbsp;                        
                         <button class="btn btn-mic btn-talk" type="submit" value="SR">
                             <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" width=40px height=40px />
                         </button>
@@ -48,10 +56,11 @@
                         <div class="testimonial-section">
                             {{Speech}}
                         </div>
-                    </span> &emsp;
+                       
+                    </span>
                     <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlaySrcSound()" width=40px height=40px>
                         <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
-                    </button> 
+                    </button>                     
                     <p></p> 
                     <p></p>       
                     <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-success">
@@ -84,17 +93,30 @@
     </section>
 
 
-
-</body>
-    <!--{%if flag%}
-        Your MP3 Name<br>
-        tranlate result:{{TranslateResult}}<br>
-        filename   : {{Filename}}<br>
-        total time : {{Totaltime}}<br>
-        audio url  : {{Mp3url}}<br>
-        <audio src="{{Mp3url}}" type="audio/mpeg" controls autoplay></audio>
+                
+    <table id="mytable" class="table table-bordred table-striped">            
+        <thead>       
+            <th>Username</th>
+            <th>Time</th>
+            <th>Source language</th>
+            <th>Input word</th>
+            <th>Target language</th>
+            <th>Translation result</th> 
+            <th>Delete</th>
+        </thead>
+        <tbody>
+    
+        <tr>
+            <td>Amy</td>
+            <td>2016/5/3 15:45</td>
+            <td>英文</td>
+            <td>Hello<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-play"></span></button></p></td>
+            <td>中文</td>
+            <td>你好<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-play"></span></button></p></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+        </tr>
+        </tbody>
         
-    {% else %}
-        <p>還沒有輸入</p>
-    {%endif%}-->
+    </table>
+</body>
 </html>
