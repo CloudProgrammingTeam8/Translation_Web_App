@@ -35,15 +35,24 @@ def TextInput(request):
                     'Srcurl':input_url
                    }
         #send a message in SQS
+        
         message = {
-                    'Username':username,
-                    'Time':time,
-                    'SourceLan':source_lan,                    
-                    'InputWord':SRtext,
-                    'TargteLan':target_lan,
-                    'TranslateResult':TranslateResult
+                    'Username':{'DataType': 'String','StringValue':username},
+                    'Time':{'DataType': 'String','StringValue':time},
+                    'SourceLan':{'DataType': 'String','StringValue':source_lan},                    
+                    'InputWord':{'DataType': 'String','StringValue':SRtext}, 
+                    'TargetLan':{'DataType': 'String','StringValue':target_lan}, 
+                    'TranslateResult':{'DataType': 'String','StringValue':TranslateResult}, 
 
         }  
+
+        queue = boto3.client('sqs')
+        queue_url = 'https://queue.amazonaws.com/977546219141/ForDjangoRecord'
+        # Put Message
+        response = queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
+        
+
+
             # Get the service resource
     # sqs = boto3.resource('sqs')
 
