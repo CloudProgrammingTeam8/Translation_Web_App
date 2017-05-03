@@ -19,28 +19,34 @@
 
             <h1 class="free">Translation</h1>
             <h4>
-                Help you translate English into Chinese by speech.
-            </h4>            
+                Help you translate by speech.&emsp;                             
+            </h4>               
             </hgroup>
             <div class="well">
-                <form action="#">
-                <div class="input-group">
-                    <input class="btn-lg" size="16" name="name" id="name" type="text" placeholder="Your Name">
-                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                    <button class="btn btn-info btn-lg btn-talk" type="submit">
-                        <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <small class="promise"><em>Enter your name and click the button to speak.</em></small>
+                <form action="" method="get">
+                    <div class="input-group">
+                        <input class="btn-lg" size="16" name="username" id="name" type="text" placeholder="Your Name">
+                        &nbsp;
+                        <select class="language" name="language">
+                            <option value="ja">日文</option>
+                            <option value="en-US" selected >英文</option>
+                            <option value="th-TH">泰文</option>
+                        </select> 
+                        &nbsp;
+                        <button class="btn btn-mic btn-talk" type="submit" value="SR">
+                            <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" width=40px height=40px />
+                        </button>
+                    </div>
+                    <small class="promise"><em>Enter your name and click the button to speak.</em></small>
 
                 </form>
                 <p></p>
                 <p></p>
-
+                {%if flag%}
                 <div>
                     <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-info">
                         <div class="testimonial-section">
-                            Hello.
+                            {{Speech}}
                         </div>
                        
                     </span>
@@ -48,21 +54,40 @@
                     <p></p>       
                     <span style="display:inline-block;" id="tb-testimonial" class="testimonial testimonial-success">
                         <div class="testimonial-section">
-                            你好
+                            {{TranslateResult}}
                         </div>
                        
                     </span> &emsp; 
-                    <button  style="display:inline-block;" class="btn btn-info btn-lg btn-play" type="submit">
+                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlaySound()" width=40px height=40px>
                         <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     </button> 
-                </div>              
-
-        
+                </div> 
+                <script>
+                    var bflat = new Audio();
+                    bflat.src = "{{Mp3url}}";
+                    function PlaySound() {
+                        bflat.play();
+                    }
+                </script>                           
+                {%endif%}
             </div>
             </div>
         </div>
     </div>
     </section>
 
+
+
 </body>
+    <!--{%if flag%}
+        Your MP3 Name<br>
+        tranlate result:{{TranslateResult}}<br>
+        filename   : {{Filename}}<br>
+        total time : {{Totaltime}}<br>
+        audio url  : {{Mp3url}}<br>
+        <audio src="{{Mp3url}}" type="audio/mpeg" controls autoplay></audio>
+        
+    {% else %}
+        <p>還沒有輸入</p>
+    {%endif%}-->
 </html>
