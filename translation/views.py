@@ -51,24 +51,8 @@ def TextInput(request):
         # Put Message
         response = queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
         
-
-
-            # Get the service resource
-    # sqs = boto3.resource('sqs')
-
-    # Get the queue
-    # while True:
-    #     queue = sqs.get_queue_by_name(QueueName='test')
-    #     for message in queue.receive_messages(MessageAttributeNames=['Author']):
-    #         #insert to rds
-    #         print('Hello, {0}!'.format(message.body))
-
-    #         #Let the queue know that the message is processed
-    #         message.delete()
-    #     time.sleep(5)
-
-        print(response)
-        print (message)
+        # print(response)
+        # print (message)
         return render_to_response('trans/index.html',response)
     else:
         return render_to_response('trans/index.html',locals())
