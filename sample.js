@@ -30,7 +30,7 @@ s3 = new AWS.S3({apiVersion: '2006-03-01'});
 // });
 
 //Upload data
-var uploadParams = {Bucket: process.argv[2], Key: '', Body: ''};
+var uploadParams = {Bucket: process.argv[2], Key: '', Body: '',ACL:'public-read-write'};
 var file = process.argv[3];
 
 // call S3 to retrieve upload file to specified bucket
