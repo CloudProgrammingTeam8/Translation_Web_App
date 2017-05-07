@@ -1,8 +1,8 @@
 web_app/settings_secret.py
 .DS_Store
 
-web_app/__ pycache__/*
-translation/__ pycache__/*
+web_app/__pycache__/*
+translation/__pycache__/*
 .ebextensions/*
 
 # Elastic Beanstalk Files
