@@ -27,13 +27,20 @@ def GTTS(TranslateInput,TextLanguage,src):
     
     # Save to S3
     #upload data to exist buckets
-    s3 = boto3.client('s3')
+   
+    # Python Way
+    # s3 = boto3.client('s3')
     TargetBucket = 'django-speech-storage'
-    data = open(filename, 'rb')
-    s3.put_object(Key=filename, 
-                  Body=data,
-                  Bucket = TargetBucket,
-                  ACL = 'public-read-write')
+    # data = open(filename, 'rb')
+    # s3.put_object(Key=filename, 
+    #               Body=data,
+    #               Bucket = TargetBucket,
+    #               ACL = 'public-read-write')
+    
+    # JS Way
+    cmd = 'node sample.js '+TargetBucket+" "+filename 
+    os.system(cmd)
+
 
     # get s3 url
     url = 'https://s3.amazonaws.com/'+TargetBucket+"/"+filename

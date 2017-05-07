@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = patterns('',
     url(r'^$', views.TextInput),
+    url(r'^delete/', views.Delete),
 )

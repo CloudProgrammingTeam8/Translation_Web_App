@@ -84,7 +84,12 @@ select.language:focus {
     background-color: rgba(91, 192, 222, 0.1);    
 }
 
-.btn-voice{
+.btn-voice-src{
+    border-color: #5BC0DE;
+    background-color: #DDF7DB;
+}
+
+.btn-voice-put{
     border-color: #5CB85C;
     background-color: #DDF7DB;
 }
