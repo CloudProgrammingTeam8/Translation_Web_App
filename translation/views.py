@@ -14,7 +14,7 @@ def db():
     cur = conn.cursor(pymysql.cursors.DictCursor)
     cur.execute("SELECT * FROM Django3")
     data = cur.fetchall()
-    print(data)
+    # print(data)
     return data
 
 # Create your views here.
@@ -47,7 +47,6 @@ def TextInput(request):
         queue_url = 'https://queue.amazonaws.com/977546219141/ForDjangoRecord'
         # Put Message
         queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
-        # response = queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
         records = db()
         # your response
         response = {
@@ -61,7 +60,7 @@ def TextInput(request):
                     'Srcurl':input_url,
                     'records':records,
                    }        
-        # print(response)
+        print(response)
         # print (message)
         return render_to_response('trans/index.html',response)
     else:
