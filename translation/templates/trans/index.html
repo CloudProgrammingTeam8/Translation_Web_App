@@ -41,7 +41,7 @@
                             <option value="th-TH">泰文</option>
                         </select> 
                         &nbsp;                        
-                        <button class="btn btn-mic btn-talk" type="submit" value="SR">
+                        <button class="btn btn-info btn-mic btn-talk" type="submit" value="SR">
                             <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" width=40px height=40px />
                         </button>
                     </div>
@@ -57,8 +57,8 @@
                             {{Speech}}
                         </div>
                        
-                    </span>
-                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlaySrcSound()" width=40px height=40px>
+                    </span> &emsp;
+                    <button  style="display:inline-block;" class="btn btn-voice-src btn-lg btn-play" onclick="PlaySrcSound()" width=40px height=40px>
                         <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     </button>                     
                     <p></p> 
@@ -69,14 +69,14 @@
                         </div>
                        
                     </span> &emsp; 
-                    <button  style="display:inline-block;" class="btn btn-voice btn-lg btn-play" onclick="PlayResultSound()" width=40px height=40px>
+                    <button  style="display:inline-block;" class="btn btn-voice-out btn-lg btn-play" onclick="PlayResultSound()" width=40px height=40px>
                         <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
                     </button> 
                 </div> 
                 <script>
                     var bflatSource = new Audio();
                     var bflatResult = new Audio();
-                    bflatSource.src = "{{SRCurl}}";
+                    bflatSource.src = "{{Srcurl}}";
                     bflatResult.src = "{{Mp3url}}";
                     function PlaySrcSound() {
                         bflatSource.play();
@@ -105,16 +105,23 @@
             <th>Delete</th>
         </thead>
         <tbody>
-    
-        <tr>
-            <td>Amy</td>
-            <td>2016/5/3 15:45</td>
-            <td>英文</td>
-            <td>Hello<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-play"></span></button></p></td>
-            <td>中文</td>
-            <td>你好<p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-play"></span></button></p></td>
-            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-        </tr>
+
+        {% for line in records %}
+        
+            <tr>
+                <td>{{line.Username}}</td>
+                <td>{{line.T}}</td>
+                <td>{{line.SourceLan}}</td>
+                <td>{{line.InputWord}}</td>
+                <td>{{line.TargetLan}}</td>
+                <td>{{line.TranslateResult}}</td>
+                <form action="/delete/" method="GET">{% csrf_token %}
+                <input type="hidden" name="time" id="time" value= "{{line.T}}" >
+                <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" type="submit"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                </form>
+            </tr>
+     
+        {% endfor %}
         </tbody>
         
     </table>

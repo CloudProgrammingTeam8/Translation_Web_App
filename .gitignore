@@ -1,5 +1,6 @@
 web_app/settings_secret.py
 .DS_Store
+config.json
 
 
 # Elastic Beanstalk Files
