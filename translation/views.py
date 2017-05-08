@@ -7,6 +7,7 @@ from .models import *
 import boto3
 import time
 import pymysql
+import settings_secret
 
 def db():
     conn = pymysql.connect(host='djangords.cldbugjrni6b.us-east-1.rds.amazonaws.com',\
