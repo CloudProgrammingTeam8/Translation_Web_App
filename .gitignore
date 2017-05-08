@@ -1,6 +1,6 @@
 web_app/settings_secret.py
 .DS_Store
-config.json
+.config.json
 
 web_app/__pycache__/*
 translation/__pycache__/*
