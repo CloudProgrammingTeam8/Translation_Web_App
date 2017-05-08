@@ -7,7 +7,10 @@ from .models import *
 import boto3
 import time
 import pymysql
+<<<<<<< HEAD
 import settings_secret
+=======
+>>>>>>> 441a020acda6711b6d6b97a6c2befd942b99b2e9
 
 def db():
     conn = pymysql.connect(host='djangords.cldbugjrni6b.us-east-1.rds.amazonaws.com',\
@@ -48,7 +51,10 @@ def TextInput(request):
         queue_url = 'https://queue.amazonaws.com/977546219141/ForDjangoRecord'
         # Put Message
         queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
+<<<<<<< HEAD
         # response = queue.send_message(QueueUrl=queue_url,DelaySeconds=10,MessageAttributes = message , MessageBody=(SRtext))
+=======
+>>>>>>> 441a020acda6711b6d6b97a6c2befd942b99b2e9
         records = db()
         # your response
         response = {
@@ -62,7 +68,11 @@ def TextInput(request):
                     'Srcurl':input_url,
                     'records':records,
                    }        
+<<<<<<< HEAD
         # print(response)
+=======
+        print(response)
+>>>>>>> 441a020acda6711b6d6b97a6c2befd942b99b2e9
         # print (message)
         return render_to_response('trans/index.html',response)
     else:
